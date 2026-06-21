@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Pagar.me
+providerId: pagarme
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Payments
+- Payment Gateway
+- PIX
+- Boleto
+- Brazil
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Pagar.me Core API (v5) enforces per-account request rate limits to protect
+  platform stability. Specific published thresholds (requests per minute/second)
+  are not enumerated in the public reference and vary by account and endpoint;
+  callers exceeding limits receive HTTP 429. Pagination on list endpoints is
+  controlled with page and size parameters. Specific per-endpoint values are not
+  reconciled in this artifact.
+notes: >-
+  Verify current rate-limit thresholds and any Retry-After behavior with Pagar.me
+  support during reconciliation. Idempotency keys are recommended on write
+  operations to safely retry without duplicate charges.
+sources:
+- https://docs.pagar.me/reference/getting-started-with-your-api
+- https://docs.pagar.me
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Account
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Per-account request throttling; specific RPM/RPS not publicly enumerated.
+- name: List Pagination Size
+  scope: endpoint
+  metric: items
+  limit: page / size query parameters
+  notes: List endpoints paginate via page and size; size has a provider-enforced maximum.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on HTTP 429 and honor any Retry-After header.
+- name: Idempotency
+  description: Use idempotency keys on charge/order creation to avoid duplicate payments when retrying.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

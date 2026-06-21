@@ -1,0 +1,116 @@
+aid: pagarme
+name: Pagar.me
+review:
+  question: Does Pagar.me expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Pagar.me's asynchronous surface is
+    server-to-client webhooks (HTTP POST callbacks the merchant must host and
+    expose), not a streaming transport the API serves. There is no documented
+    WebSocket (ws/wss) or Server-Sent Events (SSE) endpoint, so no in-scope
+    streaming surface exists to model under the current AsyncAPI scope.
+findings:
+  summary: |
+    Pagar.me's Core API (v5) is a synchronous REST API over HTTPS at
+    https://api.pagar.me/core/v5, authenticated with HTTP Basic auth using the
+    account secret key. Asynchronous payment status updates are delivered via
+    webhooks: Pagar.me sends HTTP POST notifications to a merchant-configured
+    endpoint when events occur (order, charge, subscription, invoice, recipient,
+    and transfer lifecycle events). Webhooks are an outbound HTTP callback
+    mechanism the merchant receives; they are not a WebSocket or SSE stream the
+    API serves to clients. No realtime bidirectional or server-streaming
+    endpoint (ws:// or wss://) is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.pagar.me/core/v5
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST event callbacks to a merchant-hosted URL. Not a client-consumable stream.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Pagar.me API reference.
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming endpoint is documented.
+  endpointsConfirmedRest:
+    - POST   https://api.pagar.me/core/v5/orders
+    - GET    https://api.pagar.me/core/v5/orders
+    - GET    https://api.pagar.me/core/v5/orders/{order_id}
+    - GET    https://api.pagar.me/core/v5/charges
+    - GET    https://api.pagar.me/core/v5/charges/{charge_id}
+    - DELETE https://api.pagar.me/core/v5/charges/{charge_id}
+    - POST   https://api.pagar.me/core/v5/charges/{charge_id}/capture
+    - PATCH  https://api.pagar.me/core/v5/charges/{charge_id}/card
+    - PATCH  https://api.pagar.me/core/v5/charges/{charge_id}/payment-method
+    - POST   https://api.pagar.me/core/v5/customers
+    - GET    https://api.pagar.me/core/v5/customers
+    - GET    https://api.pagar.me/core/v5/customers/{customer_id}
+    - PUT    https://api.pagar.me/core/v5/customers/{customer_id}
+    - POST   https://api.pagar.me/core/v5/customers/{customer_id}/addresses
+    - POST   https://api.pagar.me/core/v5/customers/{customer_id}/cards
+    - GET    https://api.pagar.me/core/v5/customers/{customer_id}/cards
+    - DELETE https://api.pagar.me/core/v5/customers/{customer_id}/cards/{card_id}
+    - POST   https://api.pagar.me/core/v5/tokens
+    - POST   https://api.pagar.me/core/v5/plans
+    - GET    https://api.pagar.me/core/v5/plans
+    - PUT    https://api.pagar.me/core/v5/plans/{plan_id}
+    - DELETE https://api.pagar.me/core/v5/plans/{plan_id}
+    - POST   https://api.pagar.me/core/v5/subscriptions
+    - GET    https://api.pagar.me/core/v5/subscriptions
+    - DELETE https://api.pagar.me/core/v5/subscriptions/{subscription_id}
+    - POST   https://api.pagar.me/core/v5/subscriptions/{subscription_id}/cycles
+    - GET    https://api.pagar.me/core/v5/invoices
+    - GET    https://api.pagar.me/core/v5/invoices/{invoice_id}
+    - DELETE https://api.pagar.me/core/v5/invoices/{invoice_id}
+    - POST   https://api.pagar.me/core/v5/recipients
+    - GET    https://api.pagar.me/core/v5/recipients
+    - PUT    https://api.pagar.me/core/v5/recipients/{recipient_id}
+    - POST   https://api.pagar.me/core/v5/recipients/{recipient_id}/transfers
+    - POST   https://api.pagar.me/core/v5/recipients/{recipient_id}/anticipations
+  webhookEventsObserved:
+    - order.paid
+    - order.payment_failed
+    - order.created
+    - charge.paid
+    - charge.payment_failed
+    - charge.refunded
+    - charge.pending
+    - subscription.created
+    - subscription.canceled
+    - invoice.created
+    - invoice.paid
+    - recipient.created
+    - recipient.updated
+    - transfer.created
+    - transfer.failed
+sources:
+  - url: https://docs.pagar.me/reference
+    type: APIReference
+    note: All documented endpoints are HTTPS REST under /core/v5; Basic auth.
+  - url: https://docs.pagar.me/reference/criar-pedido-2
+    type: APIReference
+    note: Order creation confirms base URL https://api.pagar.me/core/v5 and Basic auth.
+  - url: https://docs.pagar.me/docs/webhooks
+    type: Documentation
+    note: Webhooks deliver event notifications via outbound HTTP POST to a merchant URL; not WebSocket.
+  - url: https://docs.pagar.me/reference/vis%C3%A3o-geral-sobre-webhooks
+    type: APIReference
+    note: Webhook overview and event list. No streaming transport documented.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Pagar.me's only asynchronous
+    mechanism is outbound webhooks (HTTP POST callbacks), which are modeled as a
+    Webhooks API entry in apis.yml rather than as an AsyncAPI streaming document.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{secretKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Orders", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create order", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/orders", "body": { "type": "json", "data": "{\"items\":[{\"amount\":2990,\"description\":\"Plano Mensal\",\"quantity\":1}],\"customer\":{\"name\":\"Tony Stark\",\"email\":\"tony@example.com\",\"document\":\"00000000000\",\"type\":\"individual\"},\"payments\":[{\"payment_method\":\"pix\",\"pix\":{\"expires_in\":3600}}]}" } },
+          "docs": "Creates an order bundling customer, items, and payments (credit_card, pix, or boleto)."
+        },
+        {
+          "info": { "name": "List orders", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/orders" },
+          "docs": "Returns a paginated list of orders."
+        },
+        {
+          "info": { "name": "Get order", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/orders/{order_id}" },
+          "docs": "Retrieves a single order."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Charges", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List charges", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/charges" },
+          "docs": "Returns a paginated list of charges."
+        },
+        {
+          "info": { "name": "Get charge", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/charges/{charge_id}" },
+          "docs": "Retrieves a single charge."
+        },
+        {
+          "info": { "name": "Capture charge", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/charges/{charge_id}/capture", "body": { "type": "json", "data": "{\"amount\":2990}" } },
+          "docs": "Captures a previously authorized credit card charge."
+        },
+        {
+          "info": { "name": "Cancel charge", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.pagar.me/core/v5/charges/{charge_id}" },
+          "docs": "Cancels or refunds a charge."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Customers and Cards", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create customer", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/customers", "body": { "type": "json", "data": "{\"name\":\"Tony Stark\",\"email\":\"tony@example.com\",\"document\":\"00000000000\",\"type\":\"individual\"}" } },
+          "docs": "Creates a customer."
+        },
+        {
+          "info": { "name": "List customers", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/customers" },
+          "docs": "Returns a paginated list of customers."
+        },
+        {
+          "info": { "name": "Create card", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/customers/{customer_id}/cards", "body": { "type": "json", "data": "{\"token\":\"token_xxxxxxxxxxxxxxxx\"}" } },
+          "docs": "Adds a card to the customer wallet from a token."
+        },
+        {
+          "info": { "name": "List cards", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/customers/{customer_id}/cards" },
+          "docs": "Lists the cards in a customer's wallet."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Subscriptions and Plans", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create plan", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/plans", "body": { "type": "json", "data": "{\"name\":\"Plano Mensal\",\"interval\":\"month\",\"interval_count\":1,\"billing_type\":\"prepaid\",\"payment_methods\":[\"credit_card\",\"pix\"],\"items\":[{\"name\":\"Mensalidade\",\"quantity\":1,\"pricing_scheme\":{\"price\":2990}}]}" } },
+          "docs": "Creates a reusable subscription plan."
+        },
+        {
+          "info": { "name": "List plans", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/plans" },
+          "docs": "Returns a paginated list of plans."
+        },
+        {
+          "info": { "name": "Create subscription", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/subscriptions", "body": { "type": "json", "data": "{\"plan_id\":\"plan_xxxxxxxxxxxxxxxx\",\"customer_id\":\"cus_xxxxxxxxxxxxxxxx\",\"payment_method\":\"credit_card\",\"card_id\":\"card_xxxxxxxxxxxxxxxx\"}" } },
+          "docs": "Creates a recurring subscription from a plan or standalone."
+        },
+        {
+          "info": { "name": "List subscriptions", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/subscriptions" },
+          "docs": "Returns a paginated list of subscriptions."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Invoices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List invoices", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/invoices" },
+          "docs": "Returns a paginated list of invoices."
+        },
+        {
+          "info": { "name": "Get invoice", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/invoices/{invoice_id}" },
+          "docs": "Retrieves a single invoice."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Recipients and Transfers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create recipient", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/recipients", "body": { "type": "json", "data": "{\"name\":\"Loja Exemplo\",\"email\":\"loja@example.com\",\"document\":\"00000000000000\",\"type\":\"corporation\"}" } },
+          "docs": "Registers a marketplace recipient with bank details."
+        },
+        {
+          "info": { "name": "List recipients", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.pagar.me/core/v5/recipients" },
+          "docs": "Returns a paginated list of recipients."
+        },
+        {
+          "info": { "name": "Create transfer", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/recipients/{recipient_id}/transfers", "body": { "type": "json", "data": "{\"amount\":10000}" } },
+          "docs": "Transfers (withdraws) funds from a recipient balance to its bank account."
+        },
+        {
+          "info": { "name": "Create anticipation", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.pagar.me/core/v5/recipients/{recipient_id}/anticipations", "body": { "type": "json", "data": "{\"amount\":50000,\"timeframe\":\"start\",\"payment_date\":\"2026-07-01T00:00:00Z\"}" } },
+          "docs": "Requests an advance of a recipient's future receivables."
+        }
+      ]
+    }
+  ]
+}

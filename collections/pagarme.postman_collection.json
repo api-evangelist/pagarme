@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Pagar.me Core API",
+    "description": {
+      "content": "Pagar.me Core API (v5) for orders, charges, customers, cards, subscriptions, plans, invoices, recipients, transfers, and anticipations. HTTP Basic auth with the account secret key as the username and an empty password.",
+      "type": "text/plain"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{secretKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.pagar.me/core/v5" },
+    { "key": "secretKey", "value": "sk_test_xxxxxxxxxxxxxxxx" }
+  ],
+  "item": [
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create order",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/orders", "host": ["{{baseUrl}}"], "path": ["orders"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    { \"amount\": 2990, \"description\": \"Plano Mensal\", \"quantity\": 1 }\n  ],\n  \"customer\": { \"name\": \"Tony Stark\", \"email\": \"tony@example.com\", \"document\": \"00000000000\", \"type\": \"individual\" },\n  \"payments\": [\n    { \"payment_method\": \"pix\", \"pix\": { \"expires_in\": 3600 } }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "List orders",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/orders?page=1&size=10", "host": ["{{baseUrl}}"], "path": ["orders"], "query": [ { "key": "page", "value": "1" }, { "key": "size", "value": "10" } ] }
+          }
+        },
+        {
+          "name": "Get order",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/orders/:order_id", "host": ["{{baseUrl}}"], "path": ["orders", ":order_id"], "variable": [ { "key": "order_id", "value": "or_xxxxxxxxxxxxxxxx" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Charges",
+      "item": [
+        {
+          "name": "List charges",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/charges", "host": ["{{baseUrl}}"], "path": ["charges"] } }
+        },
+        {
+          "name": "Get charge",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/charges/:charge_id", "host": ["{{baseUrl}}"], "path": ["charges", ":charge_id"], "variable": [ { "key": "charge_id", "value": "ch_xxxxxxxxxxxxxxxx" } ] } }
+        },
+        {
+          "name": "Capture charge",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/charges/:charge_id/capture", "host": ["{{baseUrl}}"], "path": ["charges", ":charge_id", "capture"], "variable": [ { "key": "charge_id", "value": "ch_xxxxxxxxxxxxxxxx" } ] },
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 2990\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "Cancel charge",
+          "request": { "method": "DELETE", "url": { "raw": "{{baseUrl}}/charges/:charge_id", "host": ["{{baseUrl}}"], "path": ["charges", ":charge_id"], "variable": [ { "key": "charge_id", "value": "ch_xxxxxxxxxxxxxxxx" } ] } }
+        }
+      ]
+    },
+    {
+      "name": "Customers and Cards",
+      "item": [
+        {
+          "name": "Create customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Tony Stark\",\n  \"email\": \"tony@example.com\",\n  \"document\": \"00000000000\",\n  \"type\": \"individual\"\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "List customers",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/customers", "host": ["{{baseUrl}}"], "path": ["customers"] } }
+        },
+        {
+          "name": "Create card",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/customers/:customer_id/cards", "host": ["{{baseUrl}}"], "path": ["customers", ":customer_id", "cards"], "variable": [ { "key": "customer_id", "value": "cus_xxxxxxxxxxxxxxxx" } ] },
+            "body": { "mode": "raw", "raw": "{\n  \"token\": \"token_xxxxxxxxxxxxxxxx\"\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "List cards",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/customers/:customer_id/cards", "host": ["{{baseUrl}}"], "path": ["customers", ":customer_id", "cards"], "variable": [ { "key": "customer_id", "value": "cus_xxxxxxxxxxxxxxxx" } ] } }
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions and Plans",
+      "item": [
+        {
+          "name": "Create plan",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/plans", "host": ["{{baseUrl}}"], "path": ["plans"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Plano Mensal\",\n  \"interval\": \"month\",\n  \"interval_count\": 1,\n  \"billing_type\": \"prepaid\",\n  \"payment_methods\": [\"credit_card\", \"pix\"],\n  \"items\": [ { \"name\": \"Mensalidade\", \"quantity\": 1, \"pricing_scheme\": { \"price\": 2990 } } ]\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "List plans",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/plans", "host": ["{{baseUrl}}"], "path": ["plans"] } }
+        },
+        {
+          "name": "Create subscription",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/subscriptions", "host": ["{{baseUrl}}"], "path": ["subscriptions"] },
+            "body": { "mode": "raw", "raw": "{\n  \"plan_id\": \"plan_xxxxxxxxxxxxxxxx\",\n  \"customer_id\": \"cus_xxxxxxxxxxxxxxxx\",\n  \"payment_method\": \"credit_card\",\n  \"card_id\": \"card_xxxxxxxxxxxxxxxx\"\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "List subscriptions",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/subscriptions", "host": ["{{baseUrl}}"], "path": ["subscriptions"] } }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List invoices",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/invoices", "host": ["{{baseUrl}}"], "path": ["invoices"] } }
+        },
+        {
+          "name": "Get invoice",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/invoices/:invoice_id", "host": ["{{baseUrl}}"], "path": ["invoices", ":invoice_id"], "variable": [ { "key": "invoice_id", "value": "inv_xxxxxxxxxxxxxxxx" } ] } }
+        }
+      ]
+    },
+    {
+      "name": "Recipients and Transfers",
+      "item": [
+        {
+          "name": "Create recipient",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/recipients", "host": ["{{baseUrl}}"], "path": ["recipients"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Loja Exemplo\",\n  \"email\": \"loja@example.com\",\n  \"document\": \"00000000000000\",\n  \"type\": \"corporation\",\n  \"default_bank_account\": { \"holder_name\": \"Loja Exemplo\", \"holder_type\": \"company\", \"holder_document\": \"00000000000000\", \"bank\": \"341\", \"branch_number\": \"0001\", \"account_number\": \"123456\", \"account_check_digit\": \"7\", \"type\": \"checking\" }\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "List recipients",
+          "request": { "method": "GET", "url": { "raw": "{{baseUrl}}/recipients", "host": ["{{baseUrl}}"], "path": ["recipients"] } }
+        },
+        {
+          "name": "Create transfer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/recipients/:recipient_id/transfers", "host": ["{{baseUrl}}"], "path": ["recipients", ":recipient_id", "transfers"], "variable": [ { "key": "recipient_id", "value": "rp_xxxxxxxxxxxxxxxx" } ] },
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 10000\n}", "options": { "raw": { "language": "json" } } }
+          }
+        },
+        {
+          "name": "Create anticipation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/recipients/:recipient_id/anticipations", "host": ["{{baseUrl}}"], "path": ["recipients", ":recipient_id", "anticipations"], "variable": [ { "key": "recipient_id", "value": "rp_xxxxxxxxxxxxxxxx" } ] },
+            "body": { "mode": "raw", "raw": "{\n  \"amount\": 50000,\n  \"timeframe\": \"start\",\n  \"payment_date\": \"2026-07-01T00:00:00Z\"\n}", "options": { "raw": { "language": "json" } } }
+          }
+        }
+      ]
+    }
+  ]
+}
