@@ -199,6 +199,10 @@ apis:
     invoice, recipient, and transfer events) to configured endpoints for asynchronous
     payment status updates.
 common:
+- type: DomainSecurity
+  url: security/pagarme-domain-security.yml
+- type: Authentication
+  url: authentication/pagarme-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/pagarme
 - type: LinkedIn
