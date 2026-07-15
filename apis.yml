@@ -199,6 +199,8 @@ apis:
     invoice, recipient, and transfer events) to configured endpoints for asynchronous
     payment status updates.
 common:
+- type: AgenticAccess
+  url: agentic-access/pagarme-agentic-access.yml
 - type: DomainSecurity
   url: security/pagarme-domain-security.yml
 - type: Authentication
