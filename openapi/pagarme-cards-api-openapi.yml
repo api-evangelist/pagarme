@@ -1,0 +1,243 @@
+openapi: 3.0.1
+info:
+  title: Pagar.me Core Anticipations Cards API
+  description: The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.
+  termsOfService: https://pagar.me/termos-de-uso/
+  contact:
+    name: Pagar.me Support
+    url: https://docs.pagar.me
+  version: '5'
+servers:
+- url: https://api.pagar.me/core/v5
+  description: Pagar.me Core API v5 production
+security:
+- basicAuth: []
+tags:
+- name: Cards
+  description: Reusable card wallet and tokens for a customer.
+paths:
+  /customers/{customer_id}/cards:
+    post:
+      operationId: createCard
+      tags:
+      - Cards
+      summary: Create card
+      description: Adds a card to the customer wallet. Send card_token or card_id; never raw card data in production flows that require tokenization.
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCardRequest'
+      responses:
+        '200':
+          description: The created card
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+    get:
+      operationId: listCards
+      tags:
+      - Cards
+      summary: List customer cards
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          description: A list of cards
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardList'
+  /customers/{customer_id}/cards/{card_id}:
+    get:
+      operationId: getCard
+      tags:
+      - Cards
+      summary: Get card
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/CardId'
+      responses:
+        '200':
+          description: The card
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+    delete:
+      operationId: deleteCard
+      tags:
+      - Cards
+      summary: Delete card
+      parameters:
+      - $ref: '#/components/parameters/CustomerId'
+      - $ref: '#/components/parameters/CardId'
+      responses:
+        '200':
+          description: The deleted card
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+  /tokens:
+    post:
+      operationId: createToken
+      tags:
+      - Cards
+      summary: Create card token
+      description: Generates a single-use token from card data using the account public key (appId query parameter).
+      parameters:
+      - name: appId
+        in: query
+        required: true
+        description: Account public key.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTokenRequest'
+      responses:
+        '200':
+          description: The created token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        line_1:
+          type: string
+        line_2:
+          type: string
+        zip_code:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+    Paging:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+    CardList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Card'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        card:
+          $ref: '#/components/schemas/Card'
+        expires_at:
+          type: string
+          format: date-time
+    CreateCardRequest:
+      type: object
+      properties:
+        number:
+          type: string
+        holder_name:
+          type: string
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        cvv:
+          type: string
+        token:
+          type: string
+        billing_address:
+          $ref: '#/components/schemas/Address'
+    CreateTokenRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - card
+        card:
+          $ref: '#/components/schemas/CardInput'
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+        first_six_digits:
+          type: string
+        last_four_digits:
+          type: string
+        brand:
+          type: string
+        holder_name:
+          type: string
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        status:
+          type: string
+        type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    CardInput:
+      type: object
+      properties:
+        number:
+          type: string
+        holder_name:
+          type: string
+        exp_month:
+          type: integer
+        exp_year:
+          type: integer
+        cvv:
+          type: string
+        billing_address:
+          $ref: '#/components/schemas/Address'
+  parameters:
+    CardId:
+      name: card_id
+      in: path
+      required: true
+      schema:
+        type: string
+    CustomerId:
+      name: customer_id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with the account secret key as the username and an empty password.

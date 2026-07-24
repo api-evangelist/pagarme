@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: Pagar.me Core Anticipations Transfers API
+  description: The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.
+  termsOfService: https://pagar.me/termos-de-uso/
+  contact:
+    name: Pagar.me Support
+    url: https://docs.pagar.me
+  version: '5'
+servers:
+- url: https://api.pagar.me/core/v5
+  description: Pagar.me Core API v5 production
+security:
+- basicAuth: []
+tags:
+- name: Transfers
+  description: Recipient transfers and withdrawals.
+paths:
+  /recipients/{recipient_id}/transfers:
+    post:
+      operationId: createTransfer
+      tags:
+      - Transfers
+      summary: Create transfer
+      description: Creates a transfer (withdrawal) from a recipient balance to its bank account.
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - amount
+              properties:
+                amount:
+                  type: integer
+                  description: Amount in cents.
+      responses:
+        '200':
+          description: The created transfer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+    get:
+      operationId: listTransfers
+      tags:
+      - Transfers
+      summary: List transfers
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: A list of transfers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransferList'
+  /recipients/{recipient_id}/transfers/{transfer_id}:
+    get:
+      operationId: getTransfer
+      tags:
+      - Transfers
+      summary: Get transfer
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      - $ref: '#/components/parameters/TransferId'
+      responses:
+        '200':
+          description: The transfer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+components:
+  parameters:
+    RecipientId:
+      name: recipient_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    TransferId:
+      name: transfer_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Size:
+      name: size
+      in: query
+      schema:
+        type: integer
+        default: 10
+  schemas:
+    BankAccount:
+      type: object
+      properties:
+        holder_name:
+          type: string
+        holder_type:
+          type: string
+          enum:
+          - individual
+          - company
+        holder_document:
+          type: string
+        bank:
+          type: string
+          description: Bank code (e.g. 341).
+        branch_number:
+          type: string
+        branch_check_digit:
+          type: string
+        account_number:
+          type: string
+        account_check_digit:
+          type: string
+        type:
+          type: string
+          enum:
+          - checking
+          - savings
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: string
+        amount:
+          type: integer
+        status:
+          type: string
+        type:
+          type: string
+        source_id:
+          type: string
+        source_type:
+          type: string
+        target_id:
+          type: string
+        target_type:
+          type: string
+        bank_account:
+          $ref: '#/components/schemas/BankAccount'
+        created_at:
+          type: string
+          format: date-time
+    TransferList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transfer'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Paging:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with the account secret key as the username and an empty password.

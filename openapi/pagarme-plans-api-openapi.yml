@@ -1,0 +1,222 @@
+openapi: 3.0.1
+info:
+  title: Pagar.me Core Anticipations Plans API
+  description: The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.
+  termsOfService: https://pagar.me/termos-de-uso/
+  contact:
+    name: Pagar.me Support
+    url: https://docs.pagar.me
+  version: '5'
+servers:
+- url: https://api.pagar.me/core/v5
+  description: Pagar.me Core API v5 production
+security:
+- basicAuth: []
+tags:
+- name: Plans
+  description: Reusable subscription templates.
+paths:
+  /plans:
+    post:
+      operationId: createPlan
+      tags:
+      - Plans
+      summary: Create plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: The created plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    get:
+      operationId: listPlans
+      tags:
+      - Plans
+      summary: List plans
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: A list of plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanList'
+  /plans/{plan_id}:
+    get:
+      operationId: getPlan
+      tags:
+      - Plans
+      summary: Get plan
+      parameters:
+      - $ref: '#/components/parameters/PlanId'
+      responses:
+        '200':
+          description: The plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    put:
+      operationId: updatePlan
+      tags:
+      - Plans
+      summary: Update plan
+      parameters:
+      - $ref: '#/components/parameters/PlanId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: The updated plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    delete:
+      operationId: deletePlan
+      tags:
+      - Plans
+      summary: Delete plan
+      parameters:
+      - $ref: '#/components/parameters/PlanId'
+      responses:
+        '200':
+          description: The deleted plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PlanId:
+      name: plan_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Size:
+      name: size
+      in: query
+      schema:
+        type: integer
+        default: 10
+  schemas:
+    CreatePlanRequest:
+      type: object
+      required:
+      - name
+      - interval
+      - interval_count
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        interval:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        interval_count:
+          type: integer
+        billing_type:
+          type: string
+          enum:
+          - prepaid
+          - postpaid
+          - exact_day
+        payment_methods:
+          type: array
+          items:
+            type: string
+            enum:
+            - credit_card
+            - boleto
+            - pix
+        installments:
+          type: array
+          items:
+            type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanItem'
+        currency:
+          type: string
+    Plan:
+      allOf:
+      - $ref: '#/components/schemas/CreatePlanRequest'
+      - type: object
+        properties:
+          id:
+            type: string
+          status:
+            type: string
+          created_at:
+            type: string
+            format: date-time
+    PlanList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    PricingScheme:
+      type: object
+      properties:
+        scheme_type:
+          type: string
+          enum:
+          - unit
+          - package
+          - volume
+          - tier
+        price:
+          type: integer
+    PlanItem:
+      type: object
+      properties:
+        name:
+          type: string
+        quantity:
+          type: integer
+        pricing_scheme:
+          $ref: '#/components/schemas/PricingScheme'
+    Paging:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with the account secret key as the username and an empty password.

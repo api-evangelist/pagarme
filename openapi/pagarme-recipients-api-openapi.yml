@@ -1,0 +1,296 @@
+openapi: 3.0.1
+info:
+  title: Pagar.me Core Anticipations Recipients API
+  description: The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.
+  termsOfService: https://pagar.me/termos-de-uso/
+  contact:
+    name: Pagar.me Support
+    url: https://docs.pagar.me
+  version: '5'
+servers:
+- url: https://api.pagar.me/core/v5
+  description: Pagar.me Core API v5 production
+security:
+- basicAuth: []
+tags:
+- name: Recipients
+  description: Marketplace recipients for split and payouts.
+paths:
+  /recipients:
+    post:
+      operationId: createRecipient
+      tags:
+      - Recipients
+      summary: Create recipient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecipientRequest'
+      responses:
+        '200':
+          description: The created recipient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipient'
+    get:
+      operationId: listRecipients
+      tags:
+      - Recipients
+      summary: List recipients
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Size'
+      responses:
+        '200':
+          description: A list of recipients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipientList'
+  /recipients/{recipient_id}:
+    get:
+      operationId: getRecipient
+      tags:
+      - Recipients
+      summary: Get recipient
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      responses:
+        '200':
+          description: The recipient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipient'
+    put:
+      operationId: updateRecipient
+      tags:
+      - Recipients
+      summary: Update recipient
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecipientRequest'
+      responses:
+        '200':
+          description: The updated recipient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipient'
+  /recipients/{recipient_id}/default-bank-account:
+    patch:
+      operationId: updateRecipientBankAccount
+      tags:
+      - Recipients
+      summary: Update recipient default bank account
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccount'
+      responses:
+        '200':
+          description: The updated recipient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipient'
+  /recipients/{recipient_id}/transfer-settings:
+    patch:
+      operationId: updateRecipientTransferSettings
+      tags:
+      - Recipients
+      summary: Update recipient transfer settings
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transfer_enabled:
+                  type: boolean
+                transfer_interval:
+                  type: string
+                  enum:
+                  - Daily
+                  - Weekly
+                  - Monthly
+                transfer_day:
+                  type: integer
+      responses:
+        '200':
+          description: The updated recipient
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipient'
+  /recipients/{recipient_id}/balance:
+    get:
+      operationId: getRecipientBalance
+      tags:
+      - Recipients
+      summary: Get recipient balance
+      parameters:
+      - $ref: '#/components/parameters/RecipientId'
+      responses:
+        '200':
+          description: The recipient balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+components:
+  parameters:
+    RecipientId:
+      name: recipient_id
+      in: path
+      required: true
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    Size:
+      name: size
+      in: query
+      schema:
+        type: integer
+        default: 10
+  schemas:
+    RecipientList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipient'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    BankAccount:
+      type: object
+      properties:
+        holder_name:
+          type: string
+        holder_type:
+          type: string
+          enum:
+          - individual
+          - company
+        holder_document:
+          type: string
+        bank:
+          type: string
+          description: Bank code (e.g. 341).
+        branch_number:
+          type: string
+        branch_check_digit:
+          type: string
+        account_number:
+          type: string
+        account_check_digit:
+          type: string
+        type:
+          type: string
+          enum:
+          - checking
+          - savings
+    Recipient:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        document:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        default_bank_account:
+          $ref: '#/components/schemas/BankAccount'
+        created_at:
+          type: string
+          format: date-time
+    Balance:
+      type: object
+      properties:
+        currency:
+          type: string
+        available_amount:
+          type: integer
+        waiting_funds_amount:
+          type: integer
+        transferred_amount:
+          type: integer
+        recipient_id:
+          type: string
+    Paging:
+      type: object
+      properties:
+        total:
+          type: integer
+        page:
+          type: integer
+        size:
+          type: integer
+    CreateRecipientRequest:
+      type: object
+      required:
+      - name
+      - email
+      - document
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        description:
+          type: string
+        document:
+          type: string
+        type:
+          type: string
+          enum:
+          - individual
+          - corporation
+        default_bank_account:
+          $ref: '#/components/schemas/BankAccount'
+        transfer_settings:
+          type: object
+          properties:
+            transfer_enabled:
+              type: boolean
+            transfer_interval:
+              type: string
+              enum:
+              - Daily
+              - Weekly
+              - Monthly
+            transfer_day:
+              type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with the account secret key as the username and an empty password.
