@@ -1,0 +1,32 @@
+{
+  "provider": "pagarme",
+  "sources": [
+    "pagarme-anticipations-api-openapi.yml",
+    "pagarme-cards-api-openapi.yml",
+    "pagarme-charges-api-openapi.yml",
+    "pagarme-customers-api-openapi.yml",
+    "pagarme-invoices-api-openapi.yml",
+    "pagarme-orders-api-openapi.yml",
+    "pagarme-plans-api-openapi.yml",
+    "pagarme-recipients-api-openapi.yml",
+    "pagarme-subscriptions-api-openapi.yml",
+    "pagarme-transfers-api-openapi.yml"
+  ],
+  "outputs": [
+    "pagarme-anticipations-api-openapi.yml",
+    "pagarme-cards-api-openapi.yml",
+    "pagarme-charges-api-openapi.yml",
+    "pagarme-customers-api-openapi.yml",
+    "pagarme-invoices-api-openapi.yml",
+    "pagarme-orders-api-openapi.yml",
+    "pagarme-plans-api-openapi.yml",
+    "pagarme-recipients-api-openapi.yml",
+    "pagarme-subscriptions-api-openapi.yml",
+    "pagarme-transfers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
