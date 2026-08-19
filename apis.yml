@@ -30,7 +30,7 @@ tags:
 - Brazil
 created: '2026-06-21'
 modified: '2026-06-21'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: pagarme:pagarme-anticipations-api
   name: Pagar.me Anticipations API
