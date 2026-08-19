@@ -1,0 +1,559 @@
+{
+  "item": [
+    {
+      "id": "89acbe34-951e-46ea-8b71-3ac3ba5c3497",
+      "name": "Customers",
+      "description": {
+        "content": "Buyers and their addresses.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1973e641-23fd-4ad6-be66-8555a797895a",
+          "name": "Create customer",
+          "request": {
+            "name": "Create customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2efe8a95-672f-4078-bca5-db088a1f64c8",
+              "name": "The created customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"id\": \"string\",\n  \"created_at\": \"1996-02-03T14:18:29.247Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5613a203-ee19-44f6-864e-d8e60f3f36f4",
+          "name": "List customers",
+          "request": {
+            "name": "List customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c39c2b1e-c683-4a66-9b19-300595752760",
+              "name": "A list of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"document\": \"<string>\",\n      \"document_type\": \"<string>\",\n      \"type\": \"<string>\",\n      \"phones\": {\n        \"home_phone\": {\n          \"country_code\": \"<string>\",\n          \"area_code\": \"<string>\",\n          \"number\": \"<string>\"\n        },\n        \"mobile_phone\": {\n          \"country_code\": \"<string>\",\n          \"area_code\": \"<string>\",\n          \"number\": \"<string>\"\n        }\n      },\n      \"address\": {\n        \"line_1\": \"<string>\",\n        \"line_2\": \"<string>\",\n        \"zip_code\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"id\": \"string\",\n      \"created_at\": \"2020-08-25T19:20:04.524Z\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"document\": \"<string>\",\n      \"document_type\": \"<string>\",\n      \"type\": \"<string>\",\n      \"phones\": {\n        \"home_phone\": {\n          \"country_code\": \"<string>\",\n          \"area_code\": \"<string>\",\n          \"number\": \"<string>\"\n        },\n        \"mobile_phone\": {\n          \"country_code\": \"<string>\",\n          \"area_code\": \"<string>\",\n          \"number\": \"<string>\"\n        }\n      },\n      \"address\": {\n        \"line_1\": \"<string>\",\n        \"line_2\": \"<string>\",\n        \"zip_code\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"id\": \"string\",\n      \"created_at\": \"1960-10-11T05:47:41.895Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 8958,\n    \"page\": 6634,\n    \"size\": 321\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3261dedb-0f49-46c2-866a-67ce56740305",
+          "name": "Get customer",
+          "request": {
+            "name": "Get customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40763aa6-9e52-4220-9ef6-757e78322d2d",
+              "name": "The customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"id\": \"string\",\n  \"created_at\": \"1996-02-03T14:18:29.247Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2ec0c6f-f1b8-4caa-9a4d-6a5f1625eecb",
+          "name": "Update customer",
+          "request": {
+            "name": "Update customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62fe5dcd-4c05-4a51-aa53-ad973f6bd9e3",
+              "name": "The updated customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"document\": \"<string>\",\n  \"document_type\": \"<string>\",\n  \"type\": \"<string>\",\n  \"phones\": {\n    \"home_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    },\n    \"mobile_phone\": {\n      \"country_code\": \"<string>\",\n      \"area_code\": \"<string>\",\n      \"number\": \"<string>\"\n    }\n  },\n  \"address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"id\": \"string\",\n  \"created_at\": \"1996-02-03T14:18:29.247Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c8d73a5-b054-4cbe-b613-3ccacc6736e2",
+          "name": "Create customer address",
+          "request": {
+            "name": "Create customer address",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id",
+                "addresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"line_1\": \"<string>\",\n  \"line_2\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1940378c-5906-41ef-a601-f40a8acde4c6",
+              "name": "The created address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id",
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"line_1\": \"<string>\",\n  \"line_2\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"line_1\": \"<string>\",\n  \"line_2\": \"<string>\",\n  \"zip_code\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78c2b6dc-1506-4ff9-a922-6b985d02302a",
+    "name": "Pagar.me Core Anticipations Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

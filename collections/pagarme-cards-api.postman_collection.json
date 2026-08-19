@@ -1,0 +1,592 @@
+{
+  "item": [
+    {
+      "id": "b3363341-4e3c-4f82-9376-18b7daf55019",
+      "name": "Cards",
+      "description": {
+        "content": "Reusable card wallet and tokens for a customer.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1576ef64-3abc-4132-a38c-7572d262b3d5",
+          "name": "Create card",
+          "request": {
+            "name": "Create card",
+            "description": {
+              "content": "Adds a card to the customer wallet. Send card_token or card_id; never raw card data in production flows that require tokenization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"<string>\",\n  \"holder_name\": \"<string>\",\n  \"exp_month\": \"<integer>\",\n  \"exp_year\": \"<integer>\",\n  \"cvv\": \"<string>\",\n  \"token\": \"<string>\",\n  \"billing_address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "565902c4-6ed0-4f1e-9e61-1d12d4b258d7",
+              "name": "The created card",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"number\": \"<string>\",\n  \"holder_name\": \"<string>\",\n  \"exp_month\": \"<integer>\",\n  \"exp_year\": \"<integer>\",\n  \"cvv\": \"<string>\",\n  \"token\": \"<string>\",\n  \"billing_address\": {\n    \"line_1\": \"<string>\",\n    \"line_2\": \"<string>\",\n    \"zip_code\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"first_six_digits\": \"string\",\n  \"last_four_digits\": \"string\",\n  \"brand\": \"string\",\n  \"holder_name\": \"string\",\n  \"exp_month\": 8665,\n  \"exp_year\": 1428,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"created_at\": \"1962-07-24T14:44:25.595Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "718e0aad-990b-4ace-8af2-2d0b7b447b9b",
+          "name": "List customer cards",
+          "request": {
+            "name": "List customer cards",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ada687a4-96e2-424f-8fc4-90d9378f637a",
+              "name": "A list of cards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"first_six_digits\": \"string\",\n      \"last_four_digits\": \"string\",\n      \"brand\": \"string\",\n      \"holder_name\": \"string\",\n      \"exp_month\": 8434,\n      \"exp_year\": 8805,\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"created_at\": \"2008-09-25T09:39:55.088Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"first_six_digits\": \"string\",\n      \"last_four_digits\": \"string\",\n      \"brand\": \"string\",\n      \"holder_name\": \"string\",\n      \"exp_month\": 9315,\n      \"exp_year\": 3161,\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"created_at\": \"1957-06-22T16:13:14.155Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 6429,\n    \"page\": 8110,\n    \"size\": 1227\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e8bdbcd-414c-47a3-8ad2-817c245c4fc8",
+          "name": "Get card",
+          "request": {
+            "name": "Get card",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id",
+                "cards",
+                ":card_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "card_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37c620f4-3cb4-4cb4-8998-5f17b0ac3dab",
+              "name": "The card",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id",
+                    "cards",
+                    ":card_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "card_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"first_six_digits\": \"string\",\n  \"last_four_digits\": \"string\",\n  \"brand\": \"string\",\n  \"holder_name\": \"string\",\n  \"exp_month\": 8665,\n  \"exp_year\": 1428,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"created_at\": \"1962-07-24T14:44:25.595Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d656b13-d6c8-4e9a-88b6-9d5ff5504400",
+          "name": "Delete card",
+          "request": {
+            "name": "Delete card",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customer_id",
+                "cards",
+                ":card_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customer_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "card_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "527f546d-4efa-4f7f-86c6-75d7852b7b85",
+              "name": "The deleted card",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customer_id",
+                    "cards",
+                    ":card_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customer_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "card_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"first_six_digits\": \"string\",\n  \"last_four_digits\": \"string\",\n  \"brand\": \"string\",\n  \"holder_name\": \"string\",\n  \"exp_month\": 8665,\n  \"exp_year\": 1428,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"created_at\": \"1962-07-24T14:44:25.595Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8243ce97-401b-4aaf-b2ca-1254dcc283d2",
+          "name": "Create card token",
+          "request": {
+            "name": "Create card token",
+            "description": {
+              "content": "Generates a single-use token from card data using the account public key (appId query parameter).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appId",
+                  "value": "<string>",
+                  "description": "(Required) Account public key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"card\": {\n    \"number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"cvv\": \"<string>\",\n    \"billing_address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f30bb40-087f-4be5-b816-bdb7fe61640e",
+              "name": "The created token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"card\": {\n    \"number\": \"<string>\",\n    \"holder_name\": \"<string>\",\n    \"exp_month\": \"<integer>\",\n    \"exp_year\": \"<integer>\",\n    \"cvv\": \"<string>\",\n    \"billing_address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"card\": {\n    \"id\": \"string\",\n    \"first_six_digits\": \"string\",\n    \"last_four_digits\": \"string\",\n    \"brand\": \"string\",\n    \"holder_name\": \"string\",\n    \"exp_month\": 8926,\n    \"exp_year\": 5945,\n    \"status\": \"string\",\n    \"type\": \"string\",\n    \"created_at\": \"1981-12-25T19:16:22.989Z\"\n  },\n  \"expires_at\": \"2013-03-13T20:22:30.157Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a1ad9be-94ec-4e48-b95b-ff49f8830b28",
+    "name": "Pagar.me Core Anticipations Cards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

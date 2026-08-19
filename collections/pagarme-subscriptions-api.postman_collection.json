@@ -1,0 +1,520 @@
+{
+  "item": [
+    {
+      "id": "273cf1a5-4e09-4e20-8271-68f8dca8865d",
+      "name": "Subscriptions",
+      "description": {
+        "content": "Recurring billing agreements.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e567ce48-4b1a-4270-8d1d-3492fd3c9206",
+          "name": "Create subscription",
+          "request": {
+            "name": "Create subscription",
+            "description": {
+              "content": "Creates a recurring subscription, either from a plan (plan_id) or standalone with inline items and interval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan_id\": \"<string>\",\n  \"code\": \"<string>\",\n  \"payment_method\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"card_id\": \"<string>\",\n  \"card_token\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"billing_type\": \"<string>\",\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b49a37d1-2fbf-408a-a5f1-7cf4a9bd35d2",
+              "name": "The created subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"plan_id\": \"<string>\",\n  \"code\": \"<string>\",\n  \"payment_method\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"card_id\": \"<string>\",\n  \"card_token\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"billing_type\": \"<string>\",\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"payment_method\": \"string\",\n  \"interval\": \"string\",\n  \"interval_count\": 1442,\n  \"plan\": {\n    \"name\": \"string\",\n    \"interval\": \"day\",\n    \"interval_count\": 5351,\n    \"description\": \"string\",\n    \"billing_type\": \"exact_day\",\n    \"payment_methods\": [\n      \"credit_card\",\n      \"boleto\"\n    ],\n    \"installments\": [\n      4298,\n      3433\n    ],\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    ],\n    \"currency\": \"string\",\n    \"id\": \"string\",\n    \"status\": \"string\",\n    \"created_at\": \"2004-08-13T00:01:29.890Z\"\n  },\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"1976-11-21T09:43:04.031Z\"\n  },\n  \"current_cycle\": {\n    \"key_0\": false\n  },\n  \"created_at\": \"1972-06-04T22:28:40.011Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cc57980-fcb6-4369-85f6-cf6bb619e77d",
+          "name": "List subscriptions",
+          "request": {
+            "name": "List subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bfd2b08-f659-4b55-a76a-258faec56ff0",
+              "name": "A list of subscriptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"payment_method\": \"string\",\n      \"interval\": \"string\",\n      \"interval_count\": 8271,\n      \"plan\": {\n        \"name\": \"string\",\n        \"interval\": \"week\",\n        \"interval_count\": 5286,\n        \"description\": \"string\",\n        \"billing_type\": \"postpaid\",\n        \"payment_methods\": [\n          \"pix\",\n          \"credit_card\"\n        ],\n        \"installments\": [\n          7343,\n          5085\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"created_at\": \"1989-03-29T22:35:05.943Z\"\n      },\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1970-09-20T06:45:04.587Z\"\n      },\n      \"current_cycle\": {\n        \"key_0\": 4019.691820806046,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"created_at\": \"2000-01-28T02:09:38.696Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"payment_method\": \"string\",\n      \"interval\": \"string\",\n      \"interval_count\": 3522,\n      \"plan\": {\n        \"name\": \"string\",\n        \"interval\": \"year\",\n        \"interval_count\": 2554,\n        \"description\": \"string\",\n        \"billing_type\": \"exact_day\",\n        \"payment_methods\": [\n          \"pix\",\n          \"boleto\"\n        ],\n        \"installments\": [\n          289,\n          7318\n        ],\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"currency\": \"string\",\n        \"id\": \"string\",\n        \"status\": \"string\",\n        \"created_at\": \"1957-12-29T23:02:16.771Z\"\n      },\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"2012-01-08T22:52:54.299Z\"\n      },\n      \"current_cycle\": {\n        \"key_0\": 2181.8553195973045\n      },\n      \"created_at\": \"1951-04-18T12:34:40.578Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 3943,\n    \"page\": 7626,\n    \"size\": 1908\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0eeae63b-46c2-4661-b650-18f0b6f8b085",
+          "name": "Get subscription",
+          "request": {
+            "name": "Get subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5712ec23-3314-4574-8be5-cef6edfb7e39",
+              "name": "The subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"payment_method\": \"string\",\n  \"interval\": \"string\",\n  \"interval_count\": 757,\n  \"plan\": {\n    \"name\": \"string\",\n    \"interval\": \"month\",\n    \"interval_count\": 6397,\n    \"description\": \"string\",\n    \"billing_type\": \"exact_day\",\n    \"payment_methods\": [\n      \"credit_card\",\n      \"boleto\"\n    ],\n    \"installments\": [\n      6453,\n      3878\n    ],\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    ],\n    \"currency\": \"string\",\n    \"id\": \"string\",\n    \"status\": \"string\",\n    \"created_at\": \"1966-02-13T09:23:59.700Z\"\n  },\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"1968-05-04T15:16:05.792Z\"\n  },\n  \"current_cycle\": {\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"created_at\": \"1968-10-10T05:31:38.154Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "256b8a59-b0bf-473a-960a-283d1c4469be",
+          "name": "Cancel subscription",
+          "request": {
+            "name": "Cancel subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscription_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2e8b999-cd1e-4525-af93-58236d034fcb",
+              "name": "The cancelled subscription",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscription_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"payment_method\": \"string\",\n  \"interval\": \"string\",\n  \"interval_count\": 757,\n  \"plan\": {\n    \"name\": \"string\",\n    \"interval\": \"month\",\n    \"interval_count\": 6397,\n    \"description\": \"string\",\n    \"billing_type\": \"exact_day\",\n    \"payment_methods\": [\n      \"credit_card\",\n      \"boleto\"\n    ],\n    \"installments\": [\n      6453,\n      3878\n    ],\n    \"items\": [\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"pricing_scheme\": {\n          \"scheme_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"price\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    ],\n    \"currency\": \"string\",\n    \"id\": \"string\",\n    \"status\": \"string\",\n    \"created_at\": \"1966-02-13T09:23:59.700Z\"\n  },\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"1968-05-04T15:16:05.792Z\"\n  },\n  \"current_cycle\": {\n    \"key_0\": true,\n    \"key_1\": true\n  },\n  \"created_at\": \"1968-10-10T05:31:38.154Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c204ce6e-12ed-4a11-9f18-518b959c20af",
+          "name": "Renew subscription cycle",
+          "request": {
+            "name": "Renew subscription cycle",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":subscription_id",
+                "cycles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4512268c-000b-46f5-ab6f-fc66196a0f97",
+              "name": "The created cycle",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":subscription_id",
+                    "cycles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b60347ac-6374-42f2-9b0d-7dc9ef200be6",
+    "name": "Pagar.me Core Anticipations Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

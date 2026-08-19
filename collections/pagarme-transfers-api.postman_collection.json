@@ -1,0 +1,390 @@
+{
+  "item": [
+    {
+      "id": "5f57a20c-194a-4026-aa9c-568f00ebc512",
+      "name": "Transfers",
+      "description": {
+        "content": "Recipient transfers and withdrawals.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f346c2f0-1a0b-4598-8622-2e7e4820814d",
+          "name": "Create transfer",
+          "request": {
+            "name": "Create transfer",
+            "description": {
+              "content": "Creates a transfer (withdrawal) from a recipient balance to its bank account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                ":recipient_id",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recipient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3e0a8101-d0f4-489f-ba1f-844ddb6a2f6b",
+              "name": "The created transfer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":recipient_id",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recipient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 7646,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"source_id\": \"string\",\n  \"source_type\": \"string\",\n  \"target_id\": \"string\",\n  \"target_type\": \"string\",\n  \"bank_account\": {\n    \"holder_name\": \"string\",\n    \"holder_type\": \"individual\",\n    \"holder_document\": \"string\",\n    \"bank\": \"string\",\n    \"branch_number\": \"string\",\n    \"branch_check_digit\": \"string\",\n    \"account_number\": \"string\",\n    \"account_check_digit\": \"string\",\n    \"type\": \"savings\"\n  },\n  \"created_at\": \"1966-06-10T15:31:32.821Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b3ab262-277e-4280-ad42-04a1110989bc",
+          "name": "List transfers",
+          "request": {
+            "name": "List transfers",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":recipient_id",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recipient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c28ed2b-0705-41c8-8bea-5104bf16e0ff",
+              "name": "A list of transfers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":recipient_id",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recipient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"amount\": 5587,\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"source_id\": \"string\",\n      \"source_type\": \"string\",\n      \"target_id\": \"string\",\n      \"target_type\": \"string\",\n      \"bank_account\": {\n        \"holder_name\": \"string\",\n        \"holder_type\": \"company\",\n        \"holder_document\": \"string\",\n        \"bank\": \"string\",\n        \"branch_number\": \"string\",\n        \"branch_check_digit\": \"string\",\n        \"account_number\": \"string\",\n        \"account_check_digit\": \"string\",\n        \"type\": \"checking\"\n      },\n      \"created_at\": \"1953-06-22T11:46:52.210Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"amount\": 4358,\n      \"status\": \"string\",\n      \"type\": \"string\",\n      \"source_id\": \"string\",\n      \"source_type\": \"string\",\n      \"target_id\": \"string\",\n      \"target_type\": \"string\",\n      \"bank_account\": {\n        \"holder_name\": \"string\",\n        \"holder_type\": \"individual\",\n        \"holder_document\": \"string\",\n        \"bank\": \"string\",\n        \"branch_number\": \"string\",\n        \"branch_check_digit\": \"string\",\n        \"account_number\": \"string\",\n        \"account_check_digit\": \"string\",\n        \"type\": \"savings\"\n      },\n      \"created_at\": \"2002-06-24T02:14:32.889Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 3585,\n    \"page\": 5574,\n    \"size\": 4919\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d88a05e6-8eae-4a84-9fac-6dd2185a78ea",
+          "name": "Get transfer",
+          "request": {
+            "name": "Get transfer",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":recipient_id",
+                "transfers",
+                ":transfer_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recipient_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transfer_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87109af5-bc64-4ae0-ad62-767706931e2e",
+              "name": "The transfer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":recipient_id",
+                    "transfers",
+                    ":transfer_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recipient_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transfer_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 7646,\n  \"status\": \"string\",\n  \"type\": \"string\",\n  \"source_id\": \"string\",\n  \"source_type\": \"string\",\n  \"target_id\": \"string\",\n  \"target_type\": \"string\",\n  \"bank_account\": {\n    \"holder_name\": \"string\",\n    \"holder_type\": \"individual\",\n    \"holder_document\": \"string\",\n    \"bank\": \"string\",\n    \"branch_number\": \"string\",\n    \"branch_check_digit\": \"string\",\n    \"account_number\": \"string\",\n    \"account_check_digit\": \"string\",\n    \"type\": \"savings\"\n  },\n  \"created_at\": \"1966-06-10T15:31:32.821Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "017f3e41-feb9-4497-b702-9bcc73d8ae76",
+    "name": "Pagar.me Core Anticipations Transfers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

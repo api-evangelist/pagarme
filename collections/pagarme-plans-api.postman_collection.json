@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "7588bd7e-5255-4ac5-8baa-3fe8aa626714",
+      "name": "Plans",
+      "description": {
+        "content": "Reusable subscription templates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90edd17a-7843-4e71-855f-45372db2d25f",
+          "name": "Create plan",
+          "request": {
+            "name": "Create plan",
+            "description": {},
+            "url": {
+              "path": [
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f7f7684-0568-4d9a-bcd9-1a0cd55cc323",
+              "name": "The created plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"1980-11-03T04:18:35.080Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e6b662b-bd67-4c4f-ae7c-0f6f064fa44d",
+          "name": "List plans",
+          "request": {
+            "name": "List plans",
+            "description": {},
+            "url": {
+              "path": [
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5174aa45-2a1a-47da-ba7d-e01bc9aebbf3",
+              "name": "A list of plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"interval\": \"<string>\",\n      \"interval_count\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"billing_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"installments\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"items\": [\n        {\n          \"name\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"pricing_scheme\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"pricing_scheme\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"currency\": \"<string>\",\n      \"id\": \"string\",\n      \"status\": \"string\",\n      \"created_at\": \"1955-08-14T17:01:59.048Z\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"interval\": \"<string>\",\n      \"interval_count\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"billing_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"installments\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"items\": [\n        {\n          \"name\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"pricing_scheme\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"pricing_scheme\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"currency\": \"<string>\",\n      \"id\": \"string\",\n      \"status\": \"string\",\n      \"created_at\": \"1971-08-22T01:51:53.122Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 655,\n    \"page\": 1938,\n    \"size\": 8470\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "128afcfb-0efd-4ca1-a867-85921f0354cf",
+          "name": "Get plan",
+          "request": {
+            "name": "Get plan",
+            "description": {},
+            "url": {
+              "path": [
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cfee7b7-e5d9-41a1-a209-5be132012031",
+              "name": "The plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"1980-11-03T04:18:35.080Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4685794-fc52-4401-a7f7-f61256550148",
+          "name": "Update plan",
+          "request": {
+            "name": "Update plan",
+            "description": {},
+            "url": {
+              "path": [
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f375f70-b465-4048-a2ef-49e3c0d79b41",
+              "name": "The updated plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"1980-11-03T04:18:35.080Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc1fbffc-06d6-425b-b7cb-9668539b09e3",
+          "name": "Delete plan",
+          "request": {
+            "name": "Delete plan",
+            "description": {},
+            "url": {
+              "path": [
+                "plans",
+                ":plan_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "plan_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6a44819-ccd3-4c47-abfa-5803b387400c",
+              "name": "The deleted plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plans",
+                    ":plan_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "plan_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"interval\": \"<string>\",\n  \"interval_count\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"billing_type\": \"<string>\",\n  \"payment_methods\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"installments\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"items\": [\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"pricing_scheme\": {\n        \"scheme_type\": \"<string>\",\n        \"price\": \"<integer>\"\n      }\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"id\": \"string\",\n  \"status\": \"string\",\n  \"created_at\": \"1980-11-03T04:18:35.080Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4baabab-acfb-458a-9b0a-78dddd8915c3",
+    "name": "Pagar.me Core Anticipations Plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

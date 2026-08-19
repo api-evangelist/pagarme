@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core Anticipations Plans API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/plans",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List plans"
+        },
+        {
+          "info": {
+            "name": "Create plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pagar.me/core/v5/plans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create plan"
+        },
+        {
+          "info": {
+            "name": "Get plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/plans/:plan_id",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get plan"
+        },
+        {
+          "info": {
+            "name": "Update plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pagar.me/core/v5/plans/:plan_id",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update plan"
+        },
+        {
+          "info": {
+            "name": "Delete plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pagar.me/core/v5/plans/:plan_id",
+            "params": [
+              {
+                "name": "plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete plan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

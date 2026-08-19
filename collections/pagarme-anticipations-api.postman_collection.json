@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "ecc4b806-98be-46e6-9fa3-f4d8b4dd6a4c",
+      "name": "Anticipations",
+      "description": {
+        "content": "Receivable anticipations for recipients.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73572630-7be9-496a-b2d8-4cd38207a8e2",
+          "name": "Create anticipation",
+          "request": {
+            "name": "Create anticipation",
+            "description": {
+              "content": "Requests an advance (anticipation) of a recipient's future receivables.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recipients",
+                ":recipient_id",
+                "anticipations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recipient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<integer>\",\n  \"timeframe\": \"<string>\",\n  \"payment_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "239e5a3d-607f-476b-87f4-5b4be687936a",
+              "name": "The created anticipation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":recipient_id",
+                    "anticipations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recipient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<integer>\",\n  \"timeframe\": \"<string>\",\n  \"payment_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amount\": 8823,\n  \"net_amount\": 9841,\n  \"fee\": 3958,\n  \"status\": \"string\",\n  \"timeframe\": \"start\",\n  \"payment_date\": \"2013-08-24T12:54:34.844Z\",\n  \"created_at\": \"1956-12-03T17:34:12.369Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06aede49-aa75-4d6b-818d-b0aca4de74ef",
+          "name": "List anticipations",
+          "request": {
+            "name": "List anticipations",
+            "description": {},
+            "url": {
+              "path": [
+                "recipients",
+                ":recipient_id",
+                "anticipations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "recipient_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed2d3bc7-d106-45be-b792-bec3c5f256dd",
+              "name": "A list of anticipations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recipients",
+                    ":recipient_id",
+                    "anticipations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "recipient_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"amount\": 2597,\n      \"net_amount\": 6914,\n      \"fee\": 3438,\n      \"status\": \"string\",\n      \"timeframe\": \"start\",\n      \"payment_date\": \"2015-02-08T03:22:15.018Z\",\n      \"created_at\": \"1977-12-06T02:56:22.025Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"amount\": 1430,\n      \"net_amount\": 9649,\n      \"fee\": 9020,\n      \"status\": \"string\",\n      \"timeframe\": \"start\",\n      \"payment_date\": \"2002-02-19T16:48:34.768Z\",\n      \"created_at\": \"2022-06-28T01:52:41.095Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "19e0186b-b250-4dd4-b771-b8cf1aa96d32",
+    "name": "Pagar.me Core Anticipations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

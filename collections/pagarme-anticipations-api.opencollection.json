@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core Anticipations API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Anticipations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List anticipations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/anticipations",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List anticipations"
+        },
+        {
+          "info": {
+            "name": "Create anticipation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/anticipations",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests an advance (anticipation) of a recipient's future receivables."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

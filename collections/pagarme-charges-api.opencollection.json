@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core Anticipations Charges API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Charges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/charges/:charge_id",
+            "params": [
+              {
+                "name": "charge_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get charge"
+        },
+        {
+          "info": {
+            "name": "Cancel or refund a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.pagar.me/core/v5/charges/:charge_id",
+            "params": [
+              {
+                "name": "charge_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel or refund a charge"
+        },
+        {
+          "info": {
+            "name": "List charges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/charges",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List charges"
+        },
+        {
+          "info": {
+            "name": "Capture a charge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pagar.me/core/v5/charges/:charge_id/capture",
+            "params": [
+              {
+                "name": "charge_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Captures a previously authorized credit card charge."
+        },
+        {
+          "info": {
+            "name": "Update charge card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pagar.me/core/v5/charges/:charge_id/card",
+            "params": [
+              {
+                "name": "charge_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update charge card"
+        },
+        {
+          "info": {
+            "name": "Update charge payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pagar.me/core/v5/charges/:charge_id/payment-method",
+            "params": [
+              {
+                "name": "charge_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update charge payment method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

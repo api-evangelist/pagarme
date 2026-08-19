@@ -1,0 +1,451 @@
+{
+  "item": [
+    {
+      "id": "228985d7-1f91-4d25-ae8a-7e72c559fb87",
+      "name": "Orders",
+      "description": {
+        "content": "Top-level checkout objects bundling customer, items, and payments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18883635-0a22-4828-8d39-72f99e5bd14d",
+          "name": "Create order",
+          "request": {
+            "name": "Create order",
+            "description": {
+              "content": "Creates an order, bundling customer, items, and payments. Generates one or more charges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"payment_method\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"credit_card\": {\n        \"installments\": \"<integer>\",\n        \"statement_descriptor\": \"<string>\",\n        \"card_id\": \"<string>\",\n        \"card_token\": \"<string>\",\n        \"card\": {\n          \"number\": \"<string>\",\n          \"holder_name\": \"<string>\",\n          \"exp_month\": \"<integer>\",\n          \"exp_year\": \"<integer>\",\n          \"cvv\": \"<string>\",\n          \"billing_address\": {\n            \"line_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"boleto\": {\n        \"instructions\": \"<string>\",\n        \"due_at\": \"<dateTime>\"\n      },\n      \"pix\": {\n        \"expires_in\": \"<integer>\",\n        \"additional_information\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      \"split\": [\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        }\n      ]\n    },\n    {\n      \"payment_method\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"credit_card\": {\n        \"installments\": \"<integer>\",\n        \"statement_descriptor\": \"<string>\",\n        \"card_id\": \"<string>\",\n        \"card_token\": \"<string>\",\n        \"card\": {\n          \"number\": \"<string>\",\n          \"holder_name\": \"<string>\",\n          \"exp_month\": \"<integer>\",\n          \"exp_year\": \"<integer>\",\n          \"cvv\": \"<string>\",\n          \"billing_address\": {\n            \"line_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"boleto\": {\n        \"instructions\": \"<string>\",\n        \"due_at\": \"<dateTime>\"\n      },\n      \"pix\": {\n        \"expires_in\": \"<integer>\",\n        \"additional_information\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      \"split\": [\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"code\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"shipping\": {\n    \"amount\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"recipient_name\": \"<string>\",\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"closed\": \"<boolean>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e189d004-4a45-4618-a620-b80ee43d1e0c",
+              "name": "Order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    }\n  ],\n  \"payments\": [\n    {\n      \"payment_method\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"credit_card\": {\n        \"installments\": \"<integer>\",\n        \"statement_descriptor\": \"<string>\",\n        \"card_id\": \"<string>\",\n        \"card_token\": \"<string>\",\n        \"card\": {\n          \"number\": \"<string>\",\n          \"holder_name\": \"<string>\",\n          \"exp_month\": \"<integer>\",\n          \"exp_year\": \"<integer>\",\n          \"cvv\": \"<string>\",\n          \"billing_address\": {\n            \"line_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"boleto\": {\n        \"instructions\": \"<string>\",\n        \"due_at\": \"<dateTime>\"\n      },\n      \"pix\": {\n        \"expires_in\": \"<integer>\",\n        \"additional_information\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      \"split\": [\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        }\n      ]\n    },\n    {\n      \"payment_method\": \"<string>\",\n      \"amount\": \"<integer>\",\n      \"credit_card\": {\n        \"installments\": \"<integer>\",\n        \"statement_descriptor\": \"<string>\",\n        \"card_id\": \"<string>\",\n        \"card_token\": \"<string>\",\n        \"card\": {\n          \"number\": \"<string>\",\n          \"holder_name\": \"<string>\",\n          \"exp_month\": \"<integer>\",\n          \"exp_year\": \"<integer>\",\n          \"cvv\": \"<string>\",\n          \"billing_address\": {\n            \"line_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"line_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"zip_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"boleto\": {\n        \"instructions\": \"<string>\",\n        \"due_at\": \"<dateTime>\"\n      },\n      \"pix\": {\n        \"expires_in\": \"<integer>\",\n        \"additional_information\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"<string>\"\n          }\n        ]\n      },\n      \"split\": [\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"recipient_id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"options\": {\n            \"charge_processing_fee\": \"<boolean>\",\n            \"liable\": \"<boolean>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"code\": \"<string>\",\n  \"customer_id\": \"<string>\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"shipping\": {\n    \"amount\": \"<integer>\",\n    \"description\": \"<string>\",\n    \"recipient_name\": \"<string>\",\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"closed\": \"<boolean>\",\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"amount\": 6759,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"2024-03-01T17:46:08.565Z\"\n  },\n  \"items\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    }\n  ],\n  \"charges\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 9070,\n      \"paid_amount\": 1074,\n      \"status\": \"canceled\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"2006-10-30T21:49:13.456Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": 2061.629452497965,\n        \"key_1\": 4951.495677206306\n      },\n      \"created_at\": \"2013-06-06T20:42:35.761Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 3146,\n      \"paid_amount\": 834,\n      \"status\": \"canceled\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1957-07-28T10:27:57.855Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"created_at\": \"2011-12-04T23:26:25.774Z\"\n    }\n  ],\n  \"created_at\": \"1977-07-13T20:50:14.839Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55dd74fc-0d04-4a97-8ead-c38a260d03cd",
+          "name": "List orders",
+          "request": {
+            "name": "List orders",
+            "description": {
+              "content": "Returns a paginated list of orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3a24c0c-868e-4d42-ab17-5f85f2817037",
+              "name": "A list of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 5310,\n      \"currency\": \"string\",\n      \"status\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"2021-12-03T03:32:26.333Z\"\n      },\n      \"items\": [\n        {\n          \"amount\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"code\": \"<string>\"\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"code\": \"<string>\"\n        }\n      ],\n      \"charges\": [\n        {\n          \"id\": \"string\",\n          \"code\": \"string\",\n          \"amount\": 1631,\n          \"paid_amount\": 8833,\n          \"status\": \"processing\",\n          \"currency\": \"string\",\n          \"payment_method\": \"string\",\n          \"order_id\": \"string\",\n          \"customer\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"last_transaction\": {\n            \"key_0\": 4837\n          },\n          \"created_at\": \"1963-06-30T02:26:27.459Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"code\": \"string\",\n          \"amount\": 946,\n          \"paid_amount\": 5416,\n          \"status\": \"processing\",\n          \"currency\": \"string\",\n          \"payment_method\": \"string\",\n          \"order_id\": \"string\",\n          \"customer\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"last_transaction\": {\n            \"key_0\": 2504.4211566707595,\n            \"key_1\": false\n          },\n          \"created_at\": \"1957-03-03T21:21:31.455Z\"\n        }\n      ],\n      \"created_at\": \"1986-05-28T00:16:20.151Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 3465,\n      \"currency\": \"string\",\n      \"status\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"2016-01-16T22:43:07.102Z\"\n      },\n      \"items\": [\n        {\n          \"amount\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"code\": \"<string>\"\n        },\n        {\n          \"amount\": \"<integer>\",\n          \"description\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"code\": \"<string>\"\n        }\n      ],\n      \"charges\": [\n        {\n          \"id\": \"string\",\n          \"code\": \"string\",\n          \"amount\": 7305,\n          \"paid_amount\": 791,\n          \"status\": \"overpaid\",\n          \"currency\": \"string\",\n          \"payment_method\": \"string\",\n          \"order_id\": \"string\",\n          \"customer\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"last_transaction\": {\n            \"key_0\": 8967.68839985788,\n            \"key_1\": 6036.242853168334\n          },\n          \"created_at\": \"2011-07-15T15:09:47.137Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"code\": \"string\",\n          \"amount\": 4423,\n          \"paid_amount\": 371,\n          \"status\": \"overpaid\",\n          \"currency\": \"string\",\n          \"payment_method\": \"string\",\n          \"order_id\": \"string\",\n          \"customer\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"last_transaction\": {\n            \"key_0\": 2441,\n            \"key_1\": 7009,\n            \"key_2\": \"string\"\n          },\n          \"created_at\": \"1949-12-12T04:15:43.504Z\"\n        }\n      ],\n      \"created_at\": \"1986-05-26T06:01:56.399Z\"\n    }\n  ],\n  \"paging\": {\n    \"total\": 1421,\n    \"page\": 1545,\n    \"size\": 4436\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a0ef51d-b74e-41e6-96bb-bf440eab57c4",
+          "name": "Get order",
+          "request": {
+            "name": "Get order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2975e852-5829-40e7-872f-350accdba405",
+              "name": "The order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"amount\": 2264,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"1952-07-08T22:37:28.896Z\"\n  },\n  \"items\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    }\n  ],\n  \"charges\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 8841,\n      \"paid_amount\": 7964,\n      \"status\": \"failed\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1951-07-23T04:09:37.791Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": false,\n        \"key_1\": 6952.534660339235\n      },\n      \"created_at\": \"2011-12-30T04:13:44.286Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 1263,\n      \"paid_amount\": 8302,\n      \"status\": \"canceled\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1970-05-16T11:41:40.637Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": \"string\",\n        \"key_1\": 1411,\n        \"key_2\": 7942.865978511909\n      },\n      \"created_at\": \"1983-12-18T09:16:19.295Z\"\n    }\n  ],\n  \"created_at\": \"1948-05-21T07:32:16.465Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0e63118-1034-4e12-ad49-a34da70950ec",
+          "name": "Close or reopen an order",
+          "request": {
+            "name": "Close or reopen an order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":order_id",
+                "closed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3ae47a9-091e-4800-af66-5682865f476f",
+              "name": "The updated order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":order_id",
+                    "closed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"code\": \"string\",\n  \"amount\": 2264,\n  \"currency\": \"string\",\n  \"status\": \"string\",\n  \"customer\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"document\": \"<string>\",\n    \"document_type\": \"<string>\",\n    \"type\": \"<string>\",\n    \"phones\": {\n      \"home_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      },\n      \"mobile_phone\": {\n        \"country_code\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"number\": \"<string>\"\n      }\n    },\n    \"address\": {\n      \"line_1\": \"<string>\",\n      \"line_2\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"id\": \"string\",\n    \"created_at\": \"1952-07-08T22:37:28.896Z\"\n  },\n  \"items\": [\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    },\n    {\n      \"amount\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"code\": \"<string>\"\n    }\n  ],\n  \"charges\": [\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 8841,\n      \"paid_amount\": 7964,\n      \"status\": \"failed\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1951-07-23T04:09:37.791Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": false,\n        \"key_1\": 6952.534660339235\n      },\n      \"created_at\": \"2011-12-30T04:13:44.286Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"code\": \"string\",\n      \"amount\": 1263,\n      \"paid_amount\": 8302,\n      \"status\": \"canceled\",\n      \"currency\": \"string\",\n      \"payment_method\": \"string\",\n      \"order_id\": \"string\",\n      \"customer\": {\n        \"name\": \"<string>\",\n        \"email\": \"<email>\",\n        \"document\": \"<string>\",\n        \"document_type\": \"<string>\",\n        \"type\": \"<string>\",\n        \"phones\": {\n          \"home_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"mobile_phone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"address\": {\n          \"line_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"line_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"zip_code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"id\": \"string\",\n        \"created_at\": \"1970-05-16T11:41:40.637Z\"\n      },\n      \"last_transaction\": {\n        \"key_0\": \"string\",\n        \"key_1\": 1411,\n        \"key_2\": 7942.865978511909\n      },\n      \"created_at\": \"1983-12-18T09:16:19.295Z\"\n    }\n  ],\n  \"created_at\": \"1948-05-21T07:32:16.465Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pagar.me/core/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a21bdf79-4617-4369-9d39-b92510d4bad3",
+    "name": "Pagar.me Core Anticipations Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pagar.me Core API (v5) is a REST API for online payments in Brazil. It processes orders and charges via credit card, PIX, and boleto; manages customers, addresses, cards, and tokens; supports recurring billing through plans, subscriptions, and invoices; and provides marketplace capabilities via recipients, split, transfers, and anticipations, with webhook event notifications. Authentication uses HTTP Basic auth with the account secret key as the username and an empty password.\n\nContact Support:\n Name: Pagar.me Support",
+      "type": "text/plain"
+    }
+  }
+}

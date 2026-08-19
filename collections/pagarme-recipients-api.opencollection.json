@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core Anticipations Recipients API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List recipients"
+        },
+        {
+          "info": {
+            "name": "Create recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pagar.me/core/v5/recipients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create recipient"
+        },
+        {
+          "info": {
+            "name": "Get recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get recipient"
+        },
+        {
+          "info": {
+            "name": "Update recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update recipient"
+        },
+        {
+          "info": {
+            "name": "Update recipient default bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/default-bank-account",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update recipient default bank account"
+        },
+        {
+          "info": {
+            "name": "Update recipient transfer settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/transfer-settings",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update recipient transfer settings"
+        },
+        {
+          "info": {
+            "name": "Get recipient balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/balance",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get recipient balance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

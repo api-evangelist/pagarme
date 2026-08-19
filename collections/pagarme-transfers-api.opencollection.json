@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pagar.me Core Anticipations Transfers API",
+    "version": "5"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/transfers",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List transfers"
+        },
+        {
+          "info": {
+            "name": "Create transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/transfers",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a transfer (withdrawal) from a recipient balance to its bank account."
+        },
+        {
+          "info": {
+            "name": "Get transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.pagar.me/core/v5/recipients/:recipient_id/transfers/:transfer_id",
+            "params": [
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transfer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get transfer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
