@@ -25,6 +25,12 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/pagarme.pn
 tags:
 - Payments
 - Payment Gateway
+- Pix
+- Boleto
+- Brazil
+tags_raw:
+- Payments
+- Payment Gateway
 - PIX
 - Boleto
 - Brazil
@@ -268,6 +274,8 @@ apis:
   humanURL: https://docs.pagar.me/reference/criar-pedido-2
   baseURL: https://api.pagar.me/core/v5
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -406,6 +414,8 @@ apis:
   humanURL: https://docs.pagar.me/reference/criar-pedido-2
   baseURL: https://api.pagar.me/core/v5
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
